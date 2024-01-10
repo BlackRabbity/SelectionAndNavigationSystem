@@ -16,11 +16,6 @@ namespace SelectionAndNavigationSystem.Movement
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
-        void Update()
-        {
-            MoveTo(target.position);
-        }
-
         public void MoveTo(Vector3 destination)
         {
             navMeshAgent.destination = destination;
