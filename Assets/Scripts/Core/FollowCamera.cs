@@ -12,5 +12,10 @@ namespace SelectionAndNavigationSystem.Core
         {
             transform.position = target.position;
         }
+
+        public void ChangeCameraTarget(Transform newTarget)
+        {
+            target = newTarget;
+        }
     }
 }
