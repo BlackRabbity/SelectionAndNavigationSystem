@@ -1,5 +1,6 @@
 using SelectionAndNavigationSystem.Movement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace SelectionAndNavigationSystem.Control
 {
@@ -8,6 +9,7 @@ namespace SelectionAndNavigationSystem.Control
 
         void Update()
         {
+            if (InteractWithUI()) return;
             if (InteractWithMovement()) return;
         }
 
@@ -22,6 +24,15 @@ namespace SelectionAndNavigationSystem.Control
                 {
                     GetComponent<Mover>().MoveTo(hit.point);
                 }
+                return true;
+            }
+            return false;
+        }
+
+        private bool InteractWithUI()
+        {
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
                 return true;
             }
             return false;
