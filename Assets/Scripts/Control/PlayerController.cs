@@ -6,13 +6,14 @@ namespace SelectionAndNavigationSystem.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        [HideInInspector] 
+        public bool isActive = false;
 
         void Update()
         {
             if (InteractWithUI()) return;
             if (InteractWithMovement()) return;
         }
-
 
         private bool InteractWithMovement()
         {
