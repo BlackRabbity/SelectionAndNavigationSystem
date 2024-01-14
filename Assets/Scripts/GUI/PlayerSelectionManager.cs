@@ -32,18 +32,14 @@ namespace SelectionAndNavigationSystem.GUI
         }
         private bool IsNumberOfCharactersSameAsButtons()
         {
-            if(playerSelection.PlayerCharacters.Length == changePlayerCharacterButtons.Length)
-            {
-                return true;
-            }
-            else return false;
+            return playerSelection.PlayerCharacters.Length == changePlayerCharacterButtons.Length;
         }
         private void SetButtonsBasedOnPlayerCharacters()
         {
             for (int i = 0; i < changePlayerCharacterButtons.Length; i++)
             {
                 int copy = i;
-                changePlayerCharacterButtons[copy].onClick.AddListener(delegate { playerSelection.ChangePlayerCharacter(copy); });
+                changePlayerCharacterButtons[copy].onClick.AddListener(delegate { playerSelection.SetNewPlayerCharacter(copy); });
                 changePlayerCharacterButtons[copy].GetComponentInChildren<Text>().text = playerSelection.PlayerCharacters[copy].name;
             }
         }

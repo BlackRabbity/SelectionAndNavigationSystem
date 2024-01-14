@@ -6,9 +6,6 @@ namespace SelectionAndNavigationSystem.Movement
 {
     public class Mover : MonoBehaviour
     {
-        [SerializeField]
-        Transform target;
-
         NavMeshAgent navMeshAgent;
 
         void Start()
@@ -19,6 +16,12 @@ namespace SelectionAndNavigationSystem.Movement
         public void MoveTo(Vector3 destination)
         {
             navMeshAgent.destination = destination;
+            navMeshAgent.isStopped = false;
+        }
+
+        public void Cancel()
+        {
+            navMeshAgent.isStopped=true;
         }
     }
 }

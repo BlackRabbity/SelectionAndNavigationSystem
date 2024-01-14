@@ -8,7 +8,7 @@ namespace SelectionAndNavigationSystem.Control
         [SerializeField]
         FollowCamera followCamera;
 
-        private Transform currentPlayerCharacter;
+        Transform currentPlayerCharacter;
 
         public Transform[] PlayerCharacters;
 
@@ -38,13 +38,17 @@ namespace SelectionAndNavigationSystem.Control
         }
         private void ActivatePlayerCharacter()
         {
-            currentPlayerCharacter.GetComponent<PlayerController>().isActive = true;
-            followCamera.ChangeCameraTarget(currentPlayerCharacter);
+            currentPlayerCharacter.GetComponent<PlayerController>().IsActive = true;
+            followCamera.SetNewCameraTarget(currentPlayerCharacter);
+            foreach (var playerCharacter in PlayerCharacters)
+            {
+                playerCharacter.GetComponent<PlayerController>().SetNewFollowTarget(currentPlayerCharacter);
+            }
         }
 
-        public void ChangePlayerCharacter(int newPlayerCharacterIndex)
+        public void SetNewPlayerCharacter(int newPlayerCharacterIndex)
         {
-            currentPlayerCharacter.GetComponent<PlayerController>().isActive = false;
+            currentPlayerCharacter.GetComponent<PlayerController>().IsActive = false;
             currentPlayerCharacter = PlayerCharacters[newPlayerCharacterIndex];
             ActivatePlayerCharacter();
         }
