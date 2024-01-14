@@ -17,15 +17,18 @@ namespace SelectionAndNavigationSystem.Control
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-            if (hasHit)
+            if (isActive)
             {
-                if(Input.GetMouseButtonDown(0))
+                RaycastHit hit;
+                bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+                if (hasHit && Input.GetMouseButton(0))
                 {
                     GetComponent<Mover>().MoveTo(hit.point);
+                    return true;
                 }
-                return true;
+            } else
+            {
+
             }
             return false;
         }
