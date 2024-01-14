@@ -1,6 +1,5 @@
 using SelectionAndNavigationSystem.Core;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SelectionAndNavigationSystem.Control
 {
@@ -9,15 +8,16 @@ namespace SelectionAndNavigationSystem.Control
         [SerializeField]
         FollowCamera followCamera;
 
-        private Transform[] playerCharacters;
         private Transform currentPlayerCharacter;
+
+        public Transform[] PlayerCharacters;
 
         void Start()
         {
             GetPlayerCharacters();
-            if (playerCharacters != null)
+            if (PlayerCharacters != null)
             {
-                currentPlayerCharacter = playerCharacters[0];
+                currentPlayerCharacter = PlayerCharacters[0];
                 ActivatePlayerCharacter();
             }
         }
@@ -25,13 +25,13 @@ namespace SelectionAndNavigationSystem.Control
         private void GetPlayerCharacters()
         {
             var transforms = GetComponentsInChildren<Transform>();
-            playerCharacters = new Transform[transforms.Length - 1];
+            PlayerCharacters = new Transform[transforms.Length - 1];
             int index = 0;
             foreach (var transform in transforms)
             {
                 if (transform != this.transform)
                 {
-                    playerCharacters[index] = transform;
+                    PlayerCharacters[index] = transform;
                     index++;
                 }
             }
@@ -45,7 +45,7 @@ namespace SelectionAndNavigationSystem.Control
         public void ChangePlayerCharacter(int newPlayerCharacterIndex)
         {
             currentPlayerCharacter.GetComponent<PlayerController>().isActive = false;
-            currentPlayerCharacter = playerCharacters[newPlayerCharacterIndex];
+            currentPlayerCharacter = PlayerCharacters[newPlayerCharacterIndex];
             ActivatePlayerCharacter();
         }
     }
