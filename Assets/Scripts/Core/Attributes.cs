@@ -10,15 +10,15 @@ namespace SelectionAndNavigationSystem.Core
         [SerializeField]
         float minAttributeValue = 1;
 
-        public float speed;
-        public float maneuverability;
-        public float stamina;
+        public float Speed;
+        public float Maneuverability;
+        public float Stamina;
 
-        private void Start()
+        void Start()
         {
-            speed = GetRandomAttributeValue();
-            maneuverability = GetRandomAttributeValue();
-            stamina = GetRandomAttributeValue();
+            Speed = GetRandomAttributeValue();
+            Maneuverability = GetRandomAttributeValue();
+            Stamina = GetRandomAttributeValue();
         }
 
         private float GetRandomAttributeValue()

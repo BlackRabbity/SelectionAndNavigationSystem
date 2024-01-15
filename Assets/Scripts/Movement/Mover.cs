@@ -21,7 +21,7 @@ namespace SelectionAndNavigationSystem.Movement
 
         public void Cancel()
         {
-            navMeshAgent.isStopped=true;
+            navMeshAgent.isStopped = true;
         }
     }
 }
