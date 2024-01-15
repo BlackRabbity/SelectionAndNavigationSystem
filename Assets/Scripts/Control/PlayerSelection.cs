@@ -1,4 +1,5 @@
 using SelectionAndNavigationSystem.Core;
+using SelectionAndNavigationSystem.Movement;
 using UnityEngine;
 
 namespace SelectionAndNavigationSystem.Control
@@ -43,7 +44,8 @@ namespace SelectionAndNavigationSystem.Control
             foreach (var playerCharacter in PlayerCharacters)
             {
                 playerCharacter.GetComponent<PlayerController>().SetNewFollowTarget(currentPlayerCharacter);
-            }
+                playerCharacter.GetComponent<Mover>().Cancel();
+            };
         }
 
         public void SetNewPlayerCharacter(int newPlayerCharacterIndex)

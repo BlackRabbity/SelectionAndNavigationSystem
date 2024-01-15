@@ -10,6 +10,7 @@ namespace SelectionAndNavigationSystem.Control
         [HideInInspector]
         public bool IsActive = false;
 
+        [SerializeField]
         float distanceToStopFollow = 3f;
         Transform followTarget;
 
@@ -45,8 +46,9 @@ namespace SelectionAndNavigationSystem.Control
 
         private bool InteractWithUI()
         {
-            if(EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject())
             {
+                GetComponent<Mover>().Cancel();
                 return true;
             }
             return false;
